@@ -13,23 +13,49 @@ const quotes = [
   },
   {
     quote: "Stay hungry, stay foolish.",
-    source: "Steve Jobs"
+    source: "Steve Jobs",
+    tags: ["Motivation"]
   },
   {
     quote: "A great man is always willing to be little.",
-    source: "Ralph Waldo Emerson"
+    source: "Ralph Waldo Emerson",
+    tags: ["Motivation"]
   },
   {
     quote: "The future belongs to those who prepare for it today.",
-    source: "Malcolm X"
+    source: "Malcolm X",
+    tags: ["Motivation"]
   },
   {
     quote: "Try not to become a man of success but rather to become a man of value.",
-    source: "Albert Einstein"
+    source: "Albert Einstein",
+    tags: ["Motivation"]
   },
   {
     quote: "It’s not how much you have that makes people look up to you, it’s who you are.",
-    source: "Elvis Presley"
+    source: "Elvis Presley",
+    tags: ["Motivation"]
+  },
+  {
+    quote: "Problems are not stop signs, they are guidelines.",
+    source: "Robert H. Schuller",
+    tags: ["Motivation"],
+    citation: "brainyquote.com.",
+    year: 2001
+  },
+  {
+    quote: "For beautiful eyes, look for the good in others; for beautiful lips, speak only words of kindness; and for poise, walk with the knowledge that you are never alone.",
+    source: "Audrey Hepburn",
+    tags: ["Life", "Wisdom"],
+    citation: "brainyquote.com.",
+    year: 2019
+  },
+  {
+    quote: "It does not matter how slowly you go as long as you do not stop.",
+    source: "Confucius",
+    tags: ["Matter", "Motivation"],
+    citation: "brainyquote.com.",
+    year: 2019
   }
 ];
 
@@ -81,12 +107,26 @@ function getRandomQuote() {
 function printQuote() {
   console.log('Printing quote');
   const quote = getRandomQuote();
+  let tagsContent = "";
+  if (quote.tags && quote.tags.length > 0) {
+    quote.tags.forEach(function (tag) {
+      tagsContent += `<li>${tag}</li>`
+    });
+  }
+  if (tagsContent != "") {
+    tagsContent = `
+      <ul class="tags">
+      ${tagsContent}
+      </ul>
+      `;
+  }
   const contentToDisplay = `
     <p class="quote">${quote.quote}</p>
     <p class="source">${quote.source}
     ${(quote.citation) ? '<span class="citation">' + quote.citation + '</span>' : ''}
     ${(quote.year) ? '<span class="year">' + quote.year + '</span>' : ''}
     </p>
+    ${tagsContent}
   `;
   document.getElementById('quote-box').innerHTML = contentToDisplay;
   setBackgroundColor();

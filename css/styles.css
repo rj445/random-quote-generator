@@ -123,6 +123,25 @@ h1 {
   font-style: normal;
 }
 
+/**
+  Styling tags
+*/
+
+ul.tags {
+  list-style: none;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.tags li {
+  display: inline-block;
+  padding: 8px 16px;
+  margin-right: 4px;
+  border: 1px solid #f6f6f6;
+  border-radius: 2px;
+  background-color: rgba(255, 255, 255, 0.2)
+}
+
 @media (min-width: 768px) {
   body {
     padding: 25px;
